@@ -1,20 +1,19 @@
 import {DeftWindow} from "deft-react";
-import {App} from "./app";
 import React from "react";
+import {App} from "./app";
 
 function initWindow(): DeftWindow {
-    const window = globalThis.mainWindow || (globalThis.mainWindow = new DeftWindow({
-        title: 'Deft App',
+    return globalThis.mainWindow || (globalThis.mainWindow = new DeftWindow({
+        title: '贪吃蛇',
+        resizable: false,
+        width: 400,
+        height: 440,
     }));
-    window.bindResize((e: IResizeEvent) => {
-        console.log("window resized", e);
-    });
-    return window;
 }
 
 function main() {
     const window = initWindow();
-    window.newPage(React.createElement(App))
+    window.newPage(React.createElement(App));
 }
 
 main();

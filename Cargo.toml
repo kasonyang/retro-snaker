@@ -1,10 +1,10 @@
 [package]
-name = "deft-app"
+name = "retro-snaker"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-deft = "0.2.0"
+deft = "0.2.3"
 
 [build-dependencies]
 deft-build = { version = "0.2.0" }

@@ -9,5 +9,5 @@ npm run dev
 
 # 预览
 
-<img src="preview.gif" width="400" />
+<img src="https://github.com/kasonyang/retro-snaker/blob/main/preview.gif?raw=true" width="400" />
 

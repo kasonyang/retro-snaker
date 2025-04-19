@@ -31,6 +31,10 @@ module.exports = {
                 }
             },
             {
+                test: /\.css$/,
+                use: [ 'deft-style-loader', 'css-loader', 'postcss-loader' ]
+            },
+            {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,

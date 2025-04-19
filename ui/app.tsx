@@ -1,3 +1,4 @@
+import "./app.css"
 import {Button, Container, Label, Row} from "deft-react";
 import {useEffect, useRef, useState} from "react";
 import {SnakerGame} from "./snaker-game";
@@ -44,48 +45,19 @@ export function App() {
         gameInstance.current.onKey(e);
     }
 
-    return <Container style={{
-        background: "#2a2a2a",
-        color: "#FFF",
-        gap: 5,
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        height: '100%',
-        width: '100%',
-        position: 'relative',
-    }} onKeyUp={onKey}>
-        <Row style={{
-            flex: 1,
-            alignItems: 'center',
-            paddingLeft: 6,
-        }}>
-            成绩：<Label ref={gameScoreRef} style={{color: '#F00'}} text="0" />
+    return <Container className="main" onKeyUp={onKey}>
+        <Row className="score">
+            成绩：<Label ref={gameScoreRef} className="red" text="0" />
         </Row>
-        <Container ref={gameContainer} style={{
-            position: 'relative',
-            width: 400,
-            height: 400,
-            background: '#000',
-        }} onBoundsChange={onBoundsChange}></Container>
-        <Container style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 20,
-            background: '#0008',
+        <Container ref={gameContainer} className="game-container" onBoundsChange={onBoundsChange}></Container>
+        <Container className="welcome-container" style={{
             display: gameStatus == "Unstart" || gameStatus == "GameOver" ? "flex" : "none",
         }}>
             <Container style={{
                 alignItems: 'center',
                 display: gameStatus == "Unstart" ? "flex" : "none",
             }}>
-                <Row style={{
-                    fontSize: 36,
-                    padding: '20 0',
-                    color: '#56A8F5',
-                }}>贪吃蛇</Row>
+                <Row className="game-title">贪吃蛇</Row>
                 <Row>A或← 向左</Row>
                 <Row>W或↑ 向上</Row>
                 <Row>D或→ 向右</Row>

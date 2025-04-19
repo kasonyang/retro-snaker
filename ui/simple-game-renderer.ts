@@ -9,13 +9,7 @@ export class SimpleGameRenderer {
     constructor(container: ContainerElement) {
         this.container = container;
         const foodEl = this.foodEl = new ContainerElement();
-        foodEl.style = {
-            position: 'absolute',
-            width: 10,
-            height: 10,
-            transform: 'translate(-100, -100)',
-            background: '#F00',
-        }
+        foodEl.class = "food";
         container.addChild(foodEl);
     }
 
@@ -24,12 +18,7 @@ export class SimpleGameRenderer {
         const gameContainer = this.container;
         while (snakeElements.length < segments.length) {
             const el = new ContainerElement();
-            el.style = {
-                position: 'absolute',
-                width: 10,
-                height: 10,
-                background: '#4CAF50',
-            };
+            el.class = "segment";
             gameContainer.addChild(el);
             snakeElements.push(el);
         }
@@ -41,13 +30,11 @@ export class SimpleGameRenderer {
         for (let i = 0; i < segments.length; i++) {
             const {x, y} = segments[i];
             snakeElements[i].style = {
-                ...snakeElements[i].style,
                 transform: `translate(${x}, ${y})`,
             }
         }
         // Render food
         this.foodEl.style = {
-            ...this.foodEl.style,
             transform: `translate(${food.x}, ${food.y})`,
         }
     }

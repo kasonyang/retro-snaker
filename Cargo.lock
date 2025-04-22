@@ -1126,9 +1126,9 @@ dependencies = [
 
 [[package]]
 name = "deft"
-version = "0.4.1"
+version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9149bf5ab33b72e3b19cdc7292963f76fdf90da32c89c61a58d640473eff035a"
+checksum = "71959ab973548696feeab4088bcea7356c71d3069ba32addafed767a612ab2a4"
 dependencies = [
  "android_logger",
  "anyhow",

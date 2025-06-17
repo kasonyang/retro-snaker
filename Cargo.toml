@@ -4,8 +4,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-deft = "0.10.0"
 env_logger = "0.11.8"
+
+[target.'cfg(not(target_os = "emscripten"))'.dependencies]
+deft = { version = "0.11.0", default-features = true }
+
+[target.'cfg(target_os = "emscripten")'.dependencies]
+deft = { version = "0.11.0", default-features = false }
 
 [build-dependencies]
 deft-build = { version = "0.2.1" }

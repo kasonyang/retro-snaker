@@ -20,6 +20,7 @@ impl IApp for MyApp {
     }
 }
 
+#[cfg(not(any(target_os = "android", target_os = "emscripten")))]
 fn main() {
     env_logger::init();
     let app = App::new(MyApp {});
@@ -31,4 +32,17 @@ fn main() {
 fn android_main(android_app: deft::winit::platform::android::activity::AndroidApp) {
     let app = App::new(MyApp {});
     deft::android_bootstrap(android_app, app);
+}
+
+#[cfg(target_os = "emscripten")]
+pub fn main() {
+    // Do nothing
+}
+
+#[cfg(target_os = "emscripten")]
+#[no_mangle]
+pub extern "C" fn asm_main() {
+    env_logger::init();
+    let app = App::new(MyApp {});
+    bootstrap(app.clone());
 }

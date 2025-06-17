@@ -45,9 +45,24 @@ export function App() {
         gameInstance.current.onKey(e);
     }
 
+    const keyMap = [
+        {key: ["A", "ArrowLeft"], desc: "Left"},
+        {key: ["W", "ArrowUp"], desc: "Up"},
+        {key: ["D", "ArrowRight"], desc: "Right"},
+        {key: ["S", "ArrowDown"], desc: "Down"},
+    ]
+    const rules = keyMap.map((r) => {
+        return <Row key={r.desc}>
+            <Row className="key-tip">
+                <Row className="key-key">{r.key[0]}</Row> or <Row className="key-key">{r.key[1]}</Row>
+            </Row>
+            <Row className="key-desc">{r.desc}</Row>
+        </Row>
+    });
+
     return <Container className="main" onKeyUp={onKey}>
         <Row className="score">
-            成绩：<Label ref={gameScoreRef} className="red" text="0" />
+            Score：<Label ref={gameScoreRef} className="red" text="0" />
         </Row>
         <Container ref={gameContainer} className="game-container" onBoundsChange={onBoundsChange}></Container>
         <Container className="welcome-container" style={{
@@ -57,11 +72,8 @@ export function App() {
                 alignItems: 'center',
                 display: gameStatus == "Unstart" ? "flex" : "none",
             }}>
-                <Row className="game-title">贪吃蛇</Row>
-                <Row>A或← 向左</Row>
-                <Row>W或↑ 向上</Row>
-                <Row>D或→ 向右</Row>
-                <Row>S或↓ 向下</Row>
+                <Row className="game-title">Retro Snaker</Row>
+                {rules}
             </Container>
             <Container style={{
                 alignItems: 'center',
@@ -72,7 +84,7 @@ export function App() {
                     Game Over
                 </Row>
                 <Row style={{fontSize: 32}}>
-                    成绩：<Label style={{color: '#F00'}} text={String(finalScore)} />
+                    Score：<Label style={{color: '#F00'}} text={String(finalScore)} />
                 </Row>
             </Container>
             <Button
@@ -82,7 +94,7 @@ export function App() {
                 }}
                 onClick={onStart}
             >
-                {gameStatus == "Unstart" ? "立即开始" : "再来一局"}
+                {gameStatus == "Unstart" ? "Start" : "Try Again"}
             </Button>
         </Container>
     </Container>
